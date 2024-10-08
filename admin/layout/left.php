@@ -1,6 +1,6 @@
 <?php
-    include_once __DIR__ . '/../../model/da/helper.php';
-    include_once __DIR__ . '/../../model/bl/category_db.php';
+include_once __DIR__ . '/../../model/da/helper.php';
+include_once __DIR__ . '/../../model/bl/category_db.php';
 ?>
 <h1 style="color:orange">Categories</h1>
 <ul>
@@ -17,9 +17,9 @@
                 font-size: large;
             ">
                 <!-- Link to search page with the category name passed as a GET parameter -->
-                <a href="<?php echo Helper::get_url('admin/?c=findpro&category=' . urlencode($category->getName())); ?>" 
-                   style="color: blue; text-decoration: none;">
-                   <?php echo $category->getName(); ?>
+                <a href="<?php echo Helper::get_url('admin/?c=findpro&category=' . urlencode($category->getName())); ?>"
+                    style="color: blue; text-decoration: none;">
+                    <?php echo $category->getName(); ?>
                 </a>
             </li>
         <?php endforeach; ?>
@@ -39,12 +39,9 @@
 <?php
 if (isset($_GET['category'])) {
     $categoryName = urldecode($_GET['category']);
-   
 
-   
+
+
     $products = Product_DB::findProducts($categoryName);
-
-   
-    
 }
 ?>

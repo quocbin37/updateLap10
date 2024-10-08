@@ -13,7 +13,7 @@ if (Helper::is_submit('add_products')) {
     // Validate required fields
     if (!empty($product->getProductName()) && !empty($product->getProductID()) && !empty($product->getListPrice()) && !empty($product->getcategotyID())) {
         if (Product_db::addProduct($product)) {
-            Helper::redirect('.'); 
+            Helper::redirect('.');
         } else {
             echo "<div class='alert alert-danger'>Failed to add product.</div>";
         }
@@ -35,7 +35,7 @@ if (Helper::is_submit('add_products')) {
     <div class="mb-3">
         <label class="form-label" for="productName">Product Name:</label>
         <input type="text" class="form-control" name="productName" id="productName" required>
-    </div> 
+    </div>
 
     <div class="mb-3">
         <label class="form-label" for="listPrice">Product Price:</label>

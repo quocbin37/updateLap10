@@ -5,17 +5,16 @@ class Category_db extends Database
 {
 
     public static function getCategories()
-    { 
-      
-       $sql = "select * from categories";
-      
+    {
+
+        $sql = "select * from categories";
+
         if (!empty(self::db_get_list($sql))) {
             foreach (self::db_get_list($sql) as $row) {
                 $category = new Category();
                 $category->setId($row['categoryID']);
                 $category->setName($row['categoryName']);
                 $categorys[] = $category;
-              
             }
             return $categorys;
         }
@@ -25,7 +24,7 @@ class Category_db extends Database
     // { 
     //     // Xây dựng câu lệnh SQL với LIMIT và OFFSET
     //     $sql = "SELECT * FROM categories LIMIT $limit OFFSET $offset";
-    
+
     //     // Thực hiện truy vấn và lấy danh sách
     //     $rows = self::db_get_list($sql);
     //     if (!empty($rows)) {
@@ -40,7 +39,7 @@ class Category_db extends Database
     //     }
     //     return false; // Trả về false nếu không có danh mục nào
     // }
-    
+
 
 
     // public static function getCategoryByID($categoryid)
@@ -93,30 +92,29 @@ class Category_db extends Database
     //     }
     // }
     public static function addCategory($category)
-    {
-        {
+    { {
             // Prepare the parameters and the query
             $params = [
                 "categoryName" => $category->getName()
             ];
-            
+
             // Extract the category name and use it in the query
             $bin = $category->getName();
             $sql = "INSERT INTO `lab05`.`categories` (`categoryName`) VALUES (:categoryName)";
-            
+
             try {
                 // Display the SQL query for debugging (with placeholders)
-              //  echo $sql;
+                //  echo $sql;
                 $con = Database::db_connect();
                 // Check if the connection is available
                 if (!is_null($con)) {
-                    
+
                     // Prepare the SQL statement
                     $stmt = $con->prepare($sql);
-                    
+
                     // Execute the query with bound parameters
                     $stmt->execute($params);
-                    
+
                     // Check if rows were affected (successful insert)
                     if ($stmt->rowCount() > 0) {
                         $stmt->closeCursor(); // Free the cursor
@@ -129,16 +127,14 @@ class Category_db extends Database
                     error_log('Database connection is null.');
                     return false;
                 }
-                
             } catch (Exception $e) {
                 // Log any exceptions that occur
                 error_log('Exception occurred while adding category: ' . $e->getMessage());
                 return false;
             }
         }
-        
     }
-   
+
 
 
 

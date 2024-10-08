@@ -1,17 +1,17 @@
 <?php
-  include_once __DIR__ . '/../../../model/da/helper.php';   
-  include_once __DIR__ . '/../../../model/bl/product_db.php';
-  if (!empty(Helper::input_value('id'))){
+include_once __DIR__ . '/../../../model/da/helper.php';
+include_once __DIR__ . '/../../../model/bl/product_db.php';
+if (!empty(Helper::input_value('id'))) {
     $product = Product_db::getProductByID(Helper::input_value('id'));
     if (Helper::is_submit('editpro')) {
-        $product ->setProductName(Helper::input_value('name'));
-        $product ->setProductCode(Helper::input_value('code'));
-        $product ->setListPrice(Helper::input_value('price'));
-        if(Product_db::updateProduct($product)){
+        $product->setProductName(Helper::input_value('name'));
+        $product->setProductCode(Helper::input_value('code'));
+        $product->setListPrice(Helper::input_value('price'));
+        if (Product_db::updateProduct($product)) {
             Helper::redirect('.');
         }
     }
-  }
+}
 
 ?>
 
@@ -40,4 +40,3 @@
 </form>
 
 <p><a href="<?php echo Helper::get_url('admin/'); ?>">View product List</a></p>
-

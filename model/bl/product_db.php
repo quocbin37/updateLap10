@@ -45,20 +45,20 @@ class Product_db extends Database
     }
 
     public static function updateProduct($product)
-{
-    $sql = "update products set productName=:productName, listPrice=:listPrice, productCode=:productCode where productID=:productID";
-    $params = [
-        "productID" => $product->getProductID(),
-        "productName" => $product->getProductName(),
-        "listPrice" => $product->getListPrice(),
-        "productCode" => $product->getProductCode() // Fixed typo here
-    ];
+    {
+        $sql = "update products set productName=:productName, listPrice=:listPrice, productCode=:productCode where productID=:productID";
+        $params = [
+            "productID" => $product->getProductID(),
+            "productName" => $product->getProductName(),
+            "listPrice" => $product->getListPrice(),
+            "productCode" => $product->getProductCode() // Fixed typo here
+        ];
 
-    if (self::db_execute($sql, $params))
-        return true;
-    else
-        return false;
-}
+        if (self::db_execute($sql, $params))
+            return true;
+        else
+            return false;
+    }
 
     public static function deleteProduct($product)
     {
@@ -119,25 +119,22 @@ class Product_db extends Database
             }
         }
     }
-    public static function findProducts($condition) 
-    { 
-       $sql = "call timkiem(:condition)"; 
-       $params = ['condition'=>$condition]; 
-       if(!empty(self::db_get_list_condition($sql,$params))) 
-       { 
-          return self::db_get_list_condition($sql,$params); 
-       } 
-       return false; 
+    public static function findProducts($condition)
+    {
+        $sql = "call timkiem(:condition)";
+        $params = ['condition' => $condition];
+        if (!empty(self::db_get_list_condition($sql, $params))) {
+            return self::db_get_list_condition($sql, $params);
+        }
+        return false;
     }
 
-    public static function getStatistics() 
-   { 
-      $sql = "select * from v_quantity"; 
-      if(!empty(self::db_get_list($sql))) 
-
-      { 
-         return self::db_get_list($sql); 
-      } 
-      return false; 
-   } 
+    public static function getStatistics()
+    {
+        $sql = "select * from v_quantity";
+        if (!empty(self::db_get_list($sql))) {
+            return self::db_get_list($sql);
+        }
+        return false;
+    }
 }
