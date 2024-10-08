@@ -1,0 +1,84 @@
+:root {
+  --hauptfarbe: #333333;
+  --schriftfarbe-dunkel: #333333;
+  --schriftfarbe-hell: beige;
+  --gelb-transparent: #ffff0020;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  background: var(--hauptfarbe);
+  color: var(--schriftfarbe-hell);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+table {
+
+  margin-top: 40px;
+  /* border: #333333; */
+   
+}
+
+table,
+tr,
+td,
+th {
+  border: 1px solid blue;
+
+}
+
+td {
+  justify-content: center;
+  text-align: center;
+  height:55px;
+}
+
+tr th {
+  justify-content: center;
+  text-align: center;
+}
+
+td button {
+  display: inline-block;
+  margin-right: 5px;
+  /* Optional: Add spacing between buttons */
+}
+
+
+input,
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 5px;
+  font-size: 16px;
+}
+
+footer {
+  float: bot;
+  margin-top: 50px;
+}
+
+
+.pagination a {
+  margin: 0 5px;
+  text-decoration: none;
+  color: blue;
+}
+
+.pagination a:hover {
+  text-decoration: underline;
+}
+
+.pagination a[style="font-weight: bold;"] {
+  color: red;
+}
+
+.pagination ul li :active {
+  color: rgb(171, 116, 40);
+}
